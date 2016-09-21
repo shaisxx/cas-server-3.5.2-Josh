@@ -1,0 +1,260 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ 
+   padding:0;
+   text-decoration:none;
+   list-style:none;
+    margin:0;
+	font-family:"微软雅黑";
+	color:rgb(8, 129, 163);
+}
+
+.login-left-img{float:left;width:700px;}
+.login-left-img img{margin-top: 30px;}
+
+.welcome{
+	font-size:22px;
+	color:#555;
+	margin-bottom:20px;
+	}
+.login_l_box{  
+	width:220px;
+	float:left;
+	padding: 0 0 22px 5px;
+	}
+.login-content{
+	width: 960px; 
+	margin: 0 auto;
+	overflow: hidden;
+	}
+
+.login_r_box{  
+	width:350px;
+	float:right;
+	}
+.login-main{
+	height: 492px;
+	background:#1d8bd8;
+	}
+
+.login_box{
+	height: 320px;
+	background: #F2F2F2;
+	width: 380px;
+	position: absolute;
+	margin-left: 560px;
+	margin-top: 60px;
+	border: 8px solid #fff
+	}
+.user {  
+	margin-bottom:16px; 
+	color:#525252;
+	}
+.password{ 
+	margin-bottom:15px; 
+	color:#525252;
+	}
+.tishi{ 
+    margin-top: -20px;
+	color: #C40000;
+	font-size: 12px;
+	float: right;
+	padding-right: 40px;
+	 }
+
+.title-img{
+	width: 960px;
+	margin:0 auto; 
+	}
+.title-img img{padding-top:10px;}
+
+.input_username{ 
+	height: 40px;
+	line-height:40px;
+	width: 264px;
+	border: 1px #BFBFBF solid;
+	background: #FDFEFF;
+	padding-left: 50px;
+	font-size: 14px;
+	color: #333;
+	}
+.input_password{
+	height: 40px;
+	line-height:40px;
+	width: 264px;
+	border: 1px #BFBFBF solid;
+	background: #FDFEFF;
+	padding-left: 50px;
+	font-size: 14px;
+	color: #333;
+	}
+.input_vdcode{
+	height:32px; 
+	width:120px;
+	border-radius: 5px;
+	border:none;
+	border:1px #50B8DF solid;
+	background: #FDFEFF;
+	box-shadow: inset 0 1px 2px rgba(15, 82, 135, .25), 0 1px 0 rgba(255, 255, 255, .15);
+	padding-left:5px;
+	font-size:14px;
+	margin-left:15px;
+	color:#333;
+	}		
+.vdcode_img_box{ 
+	width:108px;  
+	height:34px; 
+	line-height:34px;
+	border-radius: 5px; 
+	float:left; 
+	margin-left:10px;
+	}/*background: #83CCE4;*/
+.vdcode_input_box{ float:left }
+.input_username:focus { outline:none; background:#fff}  
+.input_password:focus { outline:none; background:#fff}  
+.input_vdcode:focus { outline:none; background:#fff}  
+
+.title{ 
+	width: 100%;
+	margin: 0 auto;
+	height: 100px;
+	background: #fff;
+	}
+
+.login_button{ 
+	width: 316px;
+    height: 40px;
+	line-height:40px;
+    background: #d81e06;
+    border: none;
+    cursor: pointer;
+    color: #FFF;
+    font-size: 16px;
+    text-align: center;
+}
+.login_button_box{ margin: 22px 0 30px 0;}
+
+.name-label{
+	width: 40px;
+    height: 40px;
+    position: absolute;
+    border-right: 1px solid #bdbdbd;
+    background: url(../../img/yyjx/user_icon.jpg);
+    margin-left: 1px;
+    margin-top: 1px;
+	}
+.password-label{
+	width: 40px;
+    height: 40px;
+    position: absolute;
+    border-right: 1px solid #bdbdbd;
+    background: url(../../img/yyjx/password_icon.jpg);
+    margin-left: 1px;
+    margin-top: 1px;
+	}
+
+/* 验证码 */
+.authcode_box{
+	margin-bottom:24px; 
+	color:#525252;
+	}
+.input_authcode{
+	height: 40px;
+	line-height:40px;
+	width: 100px;
+	border: 1px #BFBFBF solid;
+	background: #FDFEFF;
+	padding-left: 10px;
+	font-size: 14px;
+	margin-left:10px; 
+	color: #333;
+	}
+.authcode_img{
+	position:absolute;
+	margin-left:20px;
+	}
+	
+/* 修改密码 */
+.old_password{ 
+	height: 40px;
+	line-height:40px;
+	width: 264px;
+	border: 1px #BFBFBF solid;
+	background: #FDFEFF;
+	padding-left: 10px;
+	font-size: 14px;
+	color: #333;
+	}
+.new_password{
+	height: 40px;
+	line-height:40px;
+	width: 264px;
+	border: 1px #BFBFBF solid;
+	background: #FDFEFF;
+	padding-left: 10px;
+	font-size: 14px;
+	color: #333;
+	margin-left:6px;
+	margin-right:-10px;
+	}
+.password_edit_box{
+	height: 320px;
+    background: #F2F2F2;
+    width: 420px;
+    position: absolute;
+    margin-left: 520px;
+    margin-top: 60px;
+    border: 8px solid #fff;
+	}
+.password_edit_r_box{  
+	width:350px;
+	float:right;
+	margin-right:33px;
+	}
+.l_margin{
+		margin-left:26px;
+	}
+.password_edit_tishi{ 
+    margin-top: -20px;
+    color: #C40000;
+    font-size: 12px;
+    float: right;
+    padding-right: 10px;
+ 	}
+ .submit_btn{ 
+	width: 100px;
+    height: 40px;
+	line-height:40px;
+    background: #d81e06;
+    border: none;
+    cursor: pointer;
+    color: #FFF;
+    font-size: 16px;
+    text-align: center;
+	}
+ .cancel_btn{ 
+	width: 100px;
+    height: 40px;
+	line-height:40px;
+    background: #bcbcbc;
+    border: none;
+    cursor: pointer;
+    color: #FFF;
+    font-size: 16px;
+    text-align: center;
+	margin-left:10px;
+	}
+.password_edit_button_box{ margin: 22px 0 80px 74px;}
+/* 注销 */
+.exit-main{
+	height: 492px;
+	background:#f1f1f1;
+	}
+.relogin_text{margin-top:230px;}
+.relogin_text a{
+	font-size:18px;
+	color:#1d8bd8;
+	margin-left:-50px;
+	}
+.relogin_text a:hover{text-decoration:underline;}

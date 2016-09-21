@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<portable-config>
+   <config-file path="WEB-INF/jdbc.properties">
+        <replace key="jdbc.driverClassName">com.mysql.jdbc.Driver</replace>
+        <replace key="jdbc.url">jdbc:mysql://localhost:3306/yyjxdatacenter</replace>
+        <replace key="jdbc.password">root</replace>
+        <replace key="jdbc.username"></replace>
+    </config-file>
+</portable-config>

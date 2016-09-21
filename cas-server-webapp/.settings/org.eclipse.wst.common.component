@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="cas-server-webapp">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="cas-server-support-jdbc-3.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cas-server-support-jdbc/cas-server-support-jdbc">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cas-server-support-radius-3.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cas-server-support-radius/cas-server-support-radius">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cas-server-support-ldap-3.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cas-server-support-ldap/cas-server-support-ldap">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cas-server-support-x509-3.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cas-server-support-x509/cas-server-support-x509">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cas-server-support-spnego-3.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cas-server-support-spnego/cas-server-support-spnego">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cas-server-integration-jboss-3.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cas-server-integration-jboss/cas-server-integration-jboss">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cas-server-integration-memcached-3.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cas-server-integration-memcached/cas-server-integration-memcached">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cas-server-core-3.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cas-server-core/cas-server-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cas-server-integration-restlet-3.5.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/cas-server-integration-restlet/cas-server-integration-restlet">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module deploy-path="/" handle="module:/overlay/slf/?includes=**/**&amp;excludes=META-INF/MANIFEST.MF">
+            <dependency-type>consumes</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="cas"/>
+        <property name="java-output-path" value="/cas-server-webapp/target/classes"/>
+    </wb-module>
+</project-modules>
