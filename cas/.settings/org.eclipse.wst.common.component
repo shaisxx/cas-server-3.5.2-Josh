@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="cas">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cas-server-core/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cas-server-support-jdbc/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cas-server-support-ldap/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cas-server-webapp/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cas-server-integration-memcached/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cas-server-support-jdbc/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cas-server-webapp/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cas-server-support-ldap/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cas-server-core/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/cas-server-integration-restlet/src/main/java"/>
+        <property name="context-root" value="cas"/>
+        <property name="java-output-path" value="/cas/build/classes"/>
+    </wb-module>
+</project-modules>

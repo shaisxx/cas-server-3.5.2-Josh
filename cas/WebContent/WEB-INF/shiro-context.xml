@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="unauthorizedUrl" value="/unauthorized"/>
+		<property name="successUrl" value="${cas.server.changepwd.url}"/>
+
+		<!-- Shiro Filter
+		    anon:匿名过滤器，不用登录也可以访问
+		    authc:如果继续操作,需要做对应的表单验证否则不能通过
+		    authcBasic:基本http验证过滤，如果不通过，跳转登录页面
+		    logout:登录退出过滤器
+		    noSessionCreation:没有session创建过滤器
+		    perms:权限过滤器
+		    port:端口过滤器，可以设置是否是指定端口如果不是跳转到登录页面
+		    rest:http方法过滤器，可以指定如post不能进行访问等
+		    roles:    角色过滤器，判断当前用户是否指定角色,可填入多个角色逗号分隔,与的关系
+		    ssl:请求需要通过ssl，如果不是跳转回登录页
+		    user:如果访问一个已知用户，比如记住我功能，走这个过滤器
+		-->
+		<property name="filters">
+			<map>
+			 	<entry key="casFilter">
+				    <bean class="org.apache.shiro.cas.CasFilter">
+						 <property name="failureUrl" value="/index.jsp"/>  
+					</bean>
+				</entry>
+				<entry key="casauthc">
+					<bean class="com.shtd.cas.filter.CasCustomeAuthFiter">
+					 <property name="loginUrl" value="${cas.server.login.url}"/>
+					</bean>
+				</entry>
+			</map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+                /shiro-cas	=	casFilter
+                /user/*		=	anon
+			</value>
+		</property>
+	</bean>
+
+	<!-- Define any javax.servlet.Filter beans you want anywhere in this application context. -->
+	<!-- They will automatically be acquired by the 'shiroFilter' bean above and made available -->
+	<!-- to the 'filterChainDefinitions' property. Or you can manually/explicitly add them -->
+	<!-- to the shiroFilter's 'filters' Map if desired. See its JavaDoc for more details. -->
+	<!-- <bean id="someFilter" class="..." /> <bean id="anotherFilter" class="..."></bean> -->
+
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<!-- Single realm app. If you have multiple realms, use the 'realms' property instead. -->
+		<property name="authenticator" ref="modelAuthricator" />
+		<!-- By default the servlet container sessions will be used. Uncomment this line to use shiro's native sessions (see the JavaDoc for more): -->
+		<property name="sessionMode" value="native" />
+		<property name="sessionManager" ref="sessionManager" />
+		<property name="subjectFactory" ref="casSubjectFactory"/>  
+	</bean>
+	
+	<bean id="sessionManager" class="org.apache.shiro.web.session.mgt.ServletContainerSessionManager">
+	</bean>
+	
+	<!--保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor">
+    	<property name="proxyTargetClass" value="true" />
+	</bean> 
+	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+    	<property name="securityManager" ref="securityManager" />
+	</bean>
+
+    <bean id="modelAuthricator" class="org.apache.shiro.authc.pam.ModularRealmAuthenticator">  
+	    <property name="authenticationStrategy">  
+	        <bean class="org.apache.shiro.authc.pam.FirstSuccessfulStrategy" />  
+	    </property>  
+	</bean>   
+	
+	<bean id="casSubjectFactory" class="org.apache.shiro.cas.CasSubjectFactory"/> 
+</beans>

@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/web.xml=UTF-8
+encoding//cas-server-core/src/main/java=UTF-8
+encoding//cas-server-integration-memcached/src/main/java=UTF-8
+encoding//cas-server-support-jdbc/src/main/java/org/jasig/cas/adaptors/jdbc=UTF-8
+encoding//cas-server-support-ldap/src/main/java=UTF-8
+encoding//cas-server-webapp/java/com/shtd/cas/web/flow/ProvideLoginTicketAction.java=UTF-8
+encoding//cas-server-webapp/src/main/java=UTF-8
+encoding//cas-server-webapp/src/main/java/com/shtd/cas/web/flow/AuthenticationViaFormAction.java=UTF-8
+encoding//cas-server-webapp/src/main/java/com/shtd/cas/web/flow/ChangePwdViaFormAction.java=UTF-8
