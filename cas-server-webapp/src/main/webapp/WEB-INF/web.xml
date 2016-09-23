@@ -223,6 +223,13 @@
     <servlet-name>cas</servlet-name>
     <url-pattern>/changepwd</url-pattern>
   </servlet-mapping>  
+  
+  <!-- 验证码 Begin -->
+  <servlet-mapping>
+	<servlet-name>cas</servlet-name>
+	<url-pattern>/captcha.htm</url-pattern>
+  </servlet-mapping> 
+  <!-- 验证码 End --> 
 
   <session-config>
     <!-- Default to 5 minute session timeouts -->

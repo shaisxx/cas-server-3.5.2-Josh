@@ -69,7 +69,13 @@
 							<label class="password-label"></label> 
 							<form:input class="input_password" id="password" type="password"  placeholder="请输入密码" path="password" tabindex="2" accesskey="${passwordAccessKey}"  htmlEscape="true" autocomplete="off"/>
 						</div>
-
+						
+						<c:if test="${not empty isCaptchaValidate and isCaptchaValidate eq true}">
+						<div class="authcode_box">
+							验证码<input class="input_authcode" name="j_captcha_response" type="text" />
+							<img class="authcode_img" src="captcha.htm" onclick="javascript:window.location.reload();"/>
+						</div>											
+						</c:if>
 						<div class="login_button_box">
 							<input type="hidden" name="lt" value="${loginTicket}" />
 							<input type="hidden" name="execution" value="${flowExecutionKey}" />

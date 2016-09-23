@@ -12,6 +12,8 @@ public class Constants {
 	public static final String CFG_KEY_CAS_SERVER_URL = "cas.server.url";
 	public static final String CFG_KEY_CAS_SERVER_REST_URL = "cas.server.rest.url";
 	
+	public static final String CFG_KEY_CAS_CAPTCHA_VALIDATE = "cas.captcha.validate";
+	
 	//cas配置文件
 	private static ConfigurationUtil CAS_CONFIG = new ConfigurationUtil("/../cas.properties");
 	public static String getCasConfigValue(String key, String defaultVal) {

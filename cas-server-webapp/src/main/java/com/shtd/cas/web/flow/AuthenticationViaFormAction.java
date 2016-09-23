@@ -2,6 +2,7 @@ package com.shtd.cas.web.flow;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import javax.validation.constraints.NotNull;
 
@@ -11,6 +12,7 @@ import org.jasig.cas.authentication.principal.Credentials;
 import org.jasig.cas.authentication.principal.Service;
 import org.jasig.cas.authentication.principal.UsernamePasswordCredentials;
 import org.jasig.cas.ticket.TicketException;
+import org.jasig.cas.util.Constants;
 import org.jasig.cas.web.bind.CredentialsBinder;
 import org.jasig.cas.web.support.WebUtils;
 import org.slf4j.Logger;
@@ -21,8 +23,6 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.util.CookieGenerator;
 import org.springframework.webflow.execution.RequestContext;
-
-import org.jasig.cas.util.Constants;
   
 /** 
  * Action to authenticate credentials and retrieve a TicketGrantingTicket for 
@@ -69,6 +69,9 @@ public class AuthenticationViaFormAction {
         // Validate login ticket  
         final String authoritativeLoginTicket = WebUtils.getLoginTicketFromFlowScope(context);  
         final String providedLoginTicket = WebUtils.getLoginTicketFromRequest(context);  
+        
+        final HttpServletRequest request = WebUtils.getHttpServletRequest(context);  
+        final HttpSession session = request.getSession();
           
         String username = null;
         if(credentials != null && ((UsernamePasswordCredentials)credentials).getUsername() != null){
@@ -108,7 +111,11 @@ public class AuthenticationViaFormAction {
         }  
         
         try {  
-            WebUtils.putTicketGrantingTicketInRequestScope(context, this.centralAuthenticationService.createTicketGrantingTicket(credentials));  
+        	
+        	String ticketGrantingTicket = this.centralAuthenticationService.createTicketGrantingTicket(credentials);
+        	session.setAttribute(ticketGrantingTicket, username);
+        	
+            WebUtils.putTicketGrantingTicketInRequestScope(context, ticketGrantingTicket);
             putWarnCookieIfRequestParameterPresent(context);  
             
             try {

@@ -125,4 +125,8 @@ public final class WebUtils {
     public static String getLoginTicketFromRequest(final RequestContext context) {
        return context.getRequestParameters().get("lt");
     }
+    
+    public static void putIsCaptchaValidate(final RequestContext context, final boolean isCaptchaValidate) {
+        context.getFlowScope().put("isCaptchaValidate", isCaptchaValidate);
+    }
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import javax.validation.constraints.NotNull;
 
@@ -22,8 +23,6 @@ import org.jasig.cas.authentication.handler.PasswordOneIsNullException;
 import org.jasig.cas.authentication.handler.PasswordTwoIsNullException;
 import org.jasig.cas.authentication.principal.ChangePasswordCredentials;
 import org.jasig.cas.authentication.principal.Credentials;
-import org.jasig.cas.client.validation.Assertion;
-import org.jasig.cas.client.validation.Cas20ProxyTicketValidator;
 import org.jasig.cas.util.CasUtility;
 import org.jasig.cas.util.Constants;
 import org.jasig.cas.web.bind.CredentialsBinder;
@@ -81,9 +80,11 @@ public class ChangePwdViaFormAction {
     	
     	final HttpServletRequest request = WebUtils.getHttpServletRequest(context);  
     	final String ticketGrantingTicketId = this.ticketGrantingTicketCookieGenerator.retrieveCookieValue(request);
-    	final String service = request.getParameter("service");
+//    	final String service = request.getParameter("service");
     	
-    	String username = null;
+    	final HttpSession session = request.getSession();
+    	
+    	String username = (String)session.getAttribute(ticketGrantingTicketId);
     	
     	if (ticketGrantingTicketId != null) {
     		
@@ -129,15 +130,16 @@ public class ChangePwdViaFormAction {
 	    		}
 	    		
 	        	// 根据TGT获得登录用户名 Begin
-	    		String serviceTicket = null;
-	        	if(service != null && service.length() != 0){
-		        	String casServerUrl = CasUtility.getCasServerUrl(request);
+//	    		String serviceTicket = null;
+//	        	if(service != null && service.length() != 0){
+	    		if(username != null && username.length() != 0){
+		        	/*String casServerUrl = CasUtility.getCasServerUrl(request);
 		    	    Cas20ProxyTicketValidator sv = new Cas20ProxyTicketValidator(casServerUrl);
 		    	    sv.setAcceptAnyProxy(true);
 		        	String server = CasUtility.getCasServerRestUrl(request);
 		        	serviceTicket = getServiceTicket(server, ticketGrantingTicketId, service);
 			        Assertion a = sv.validate(serviceTicket, service);
-			        username = a.getPrincipal().getName();
+			        username = a.getPrincipal().getName();*/
 			        
 			        String salt = CasUtility.getSalt();
 			        String password = CasUtility.encodePassword(newPwd1, salt);

@@ -94,6 +94,9 @@
         <prop key="/authorizationFailure.html">passThroughController</prop>
         <prop key="/403.html">passThroughController</prop>
         <prop key="/status">healthCheckController</prop>
+        <!-- 验证码 Begin -->
+        <prop key="/captcha.htm">captchaImageCreateController</prop>
+        <!-- 验证码 End -->        
       </props>
     </property>
     <property
@@ -293,4 +296,34 @@
         p:ticketIdGenerator-ref="loginTicketUniqueIdGenerator"/>
     
   <bean id="ajaxLoginServiceTicketAction" class="com.shtd.cas.web.flow.AjaxLoginServiceTicketAction"/>  
+  
+	<!-- 验证码 Begin -->
+	<bean id="captchaValidateAction" class="com.shtd.cas.web.flow.CaptchaValidateAction"
+		p:captchaService-ref="jcaptchaService"
+		p:captchaValidationParameter="j_captcha_response"/>
+
+	<bean id="captchaImageCreateController"  class="com.shtd.cas.web.controller.CaptchaImageCreateController">
+		<property name="jcaptchaService" ref="jcaptchaService"/>
+	</bean>
+
+	<bean id="fastHashMapCaptchaStore" class="com.octo.captcha.service.captchastore.FastHashMapCaptchaStore" />
+	
+	<bean id="jcaptchaService" class="com.octo.captcha.service.image.DefaultManageableImageCaptchaService">
+		<constructor-arg type="com.octo.captcha.service.captchastore.CaptchaStore" index="0">
+			<ref bean="fastHashMapCaptchaStore"/>
+		</constructor-arg>
+		<constructor-arg type="com.octo.captcha.engine.CaptchaEngine" index="1">
+			<bean class="com.shtd.cas.util.JCaptchaEngineEx"/>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>180</value>
+		</constructor-arg>
+		<constructor-arg index="3">
+			<value>100000</value>
+		</constructor-arg>
+		<constructor-arg index="4">
+			<value>75000</value>
+		</constructor-arg>
+	</bean> 
+	<!-- 验证码 End -->  
 </beans>

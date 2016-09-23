@@ -166,7 +166,7 @@
 	      To enable LPPE on the 'success' replace the below transition with:
 	      <transition on="success" to="passwordPolicyCheck" />
 	    -->
-		<transition on="success" to="sendTicketGrantingTicket" />
+		<transition on="success" to="captchaValidate" />
 		<transition on="error" to="loginResponse" />
 		<transition on="accountDisabled" to="casAccountDisabledView" />
 	    <transition on="mustChangePassword" to="casMustChangePassView" />
@@ -175,6 +175,14 @@
 	    <transition on="badWorkstation" to="casBadWorkstationView" />
 	    <transition on="passwordExpired" to="casExpiredPassView" />
 	</action-state>
+	
+	<!-- 验证码 Begin -->
+	<action-state id="captchaValidate">
+	   <evaluate expression="captchaValidateAction.doSubmit(flowRequestContext, messageContext)" />
+	   <transition on="success" to="sendTicketGrantingTicket" />
+	   <transition on="error" to="loginResponse" />
+	</action-state>
+	<!-- 验证码 End -->
 	
 	<action-state id="sendTicketGrantingTicket">
         <evaluate expression="sendTicketGrantingTicketAction" />

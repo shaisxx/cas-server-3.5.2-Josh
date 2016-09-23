@@ -10,8 +10,10 @@
 	color:rgb(8, 129, 163);
 }
 
-.login-left-img{float:left;width:700px;}
+.login-left-img{float:left;width:700px; position:relative;}
 .login-left-img img{margin-top: 30px;}
+
+.login_text_img{ position:absolute; top:175px; left:450px;}
 
 .welcome{
 	font-size:22px;
@@ -27,6 +29,7 @@
 	width: 960px; 
 	margin: 0 auto;
 	overflow: hidden;
+	position:relative;
 	}
 
 .login_r_box{  
@@ -251,10 +254,16 @@
 	height: 492px;
 	background:#f1f1f1;
 	}
-.relogin_text{margin-top:230px;}
+.relogin_text{top:220px; position:absolute;left:680px;}
 .relogin_text a{
-	font-size:18px;
-	color:#1d8bd8;
-	margin-left:-50px;
+	font-size: 16px;
+    border-radius: 15px;
+    width: 110px;
+    height: 30px;
+    background: #fff;
+    display: block;
+    line-height: 30px;
+    text-align: center;
+	color:#ef2020;
 	}
 .relogin_text a:hover{text-decoration:underline;}

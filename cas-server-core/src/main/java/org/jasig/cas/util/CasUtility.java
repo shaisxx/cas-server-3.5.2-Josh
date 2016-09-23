@@ -58,4 +58,13 @@ public class CasUtility {
         }
         return true;
     }
+    
+    public static boolean isCaptchaValidate(){
+    	String isValidate = Constants.getCasConfigValue("cas.captcha.validate", "false");
+    	if(isValidate != null && isValidate.equals("true")){
+    		return true;
+    	}else {
+			return false;
+		}
+    }
 }
